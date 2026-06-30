@@ -9,7 +9,7 @@ function Navbar() {
 
       <nav>
         <Link to="/">Home</Link>
-        <a href="#">Brands</a>
+        <Link to="/brands">Brands</Link>
         <a href="#">Accessories</a>
         <a href="#">Offers</a>
         <a href="#">Contact</a>

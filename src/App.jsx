@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { manufacturers, categories, toSlug } from "./data";
+import BrandLogo from "./components/BrandLogo";
 import "./App.css";
 
 function App() {
@@ -35,10 +36,11 @@ function App() {
         <h2>Shop By Car Brand</h2>
 
         <div className="grid">
-          {manufacturers.map((brand) => (
-            <div className="card" key={brand}>
-              <h3>{brand}</h3>
-              <Link to={`/accessories/${toSlug(brand)}`}>
+          {manufacturers.map(({ name, logo }) => (
+            <div className="card" key={name}>
+              <BrandLogo name={name} logo={logo} />
+              <h3>{name}</h3>
+              <Link to={`/accessories/${toSlug(name)}`}>
                 <button>View Accessories</button>
               </Link>
             </div>

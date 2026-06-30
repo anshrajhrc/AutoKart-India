@@ -1,23 +1,29 @@
 import { useParams, Navigate } from "react-router-dom";
 import { categories, fromSlug } from "./data";
+import BrandLogo from "./components/BrandLogo";
 
 function BrandPage() {
   const { brand } = useParams();
-  const brandName = fromSlug(brand);
+  const brandData = fromSlug(brand);
 
-  if (!brandName) return <Navigate to="/" replace />;
+  if (!brandData) return <Navigate to="/" replace />;
+
+  const { name, logo } = brandData;
 
   return (
     <section className="section">
 
-      <h2>{brandName} Accessories</h2>
+      <div style={{ display: "flex", alignItems: "center", gap: "20px", justifyContent: "center", marginBottom: "40px" }}>
+        <BrandLogo name={name} logo={logo} />
+        <h2 style={{ margin: 0 }}>{name} Accessories</h2>
+      </div>
 
       <div className="grid">
         {categories.map((item) => (
           <div className="card" key={item}>
             <h3>{item}</h3>
             <p style={{ color: "#666", fontSize: "14px", margin: "8px 0" }}>
-              for {brandName}
+              for {name}
             </p>
             <button>Shop Now</button>
           </div>
