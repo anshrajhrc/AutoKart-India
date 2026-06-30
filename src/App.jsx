@@ -1,56 +1,10 @@
+import { Link } from "react-router-dom";
+import { manufacturers, categories, toSlug } from "./data";
 import "./App.css";
-
-const manufacturers = [
-  "Maruti Suzuki",
-  "Hyundai",
-  "Tata",
-  "Mahindra",
-  "Kia",
-  "Honda",
-  "Toyota",
-  "MG",
-  "Skoda",
-  "Volkswagen",
-  "Renault",
-  "Nissan",
-  "Jeep",
-  "BMW",
-  "Mercedes-Benz",
-  "Audi",
-];
-
-const categories = [
-  "Seat Covers",
-  "Floor Mats",
-  "Android Screens",
-  "Dash Cameras",
-  "Car Perfumes",
-  "LED Lights",
-  "Alloy Wheels",
-  "Tyres",
-  "Car Covers",
-  "Cleaning Kits",
-  "Mobile Holders",
-  "Air Purifiers",
-];
 
 function App() {
   return (
-    <div className="app">
-
-      {/* Navbar */}
-
-      <header className="navbar">
-        <h2>AutoKart India</h2>
-
-        <nav>
-          <a href="#">Home</a>
-          <a href="#">Brands</a>
-          <a href="#">Accessories</a>
-          <a href="#">Offers</a>
-          <a href="#">Contact</a>
-        </nav>
-      </header>
+    <>
 
       {/* Hero */}
 
@@ -67,10 +21,7 @@ function App() {
           </p>
 
           <div className="search-box">
-            <input
-              placeholder="Search Accessories, Car Brand..."
-            />
-
+            <input placeholder="Search Accessories, Car Brand..." />
             <button>Search</button>
           </div>
         </div>
@@ -84,14 +35,14 @@ function App() {
         <h2>Shop By Car Brand</h2>
 
         <div className="grid">
-
           {manufacturers.map((brand) => (
             <div className="card" key={brand}>
               <h3>{brand}</h3>
-              <button>View Accessories</button>
+              <Link to={`/accessories/${toSlug(brand)}`}>
+                <button>View Accessories</button>
+              </Link>
             </div>
           ))}
-
         </div>
 
       </section>
@@ -103,13 +54,11 @@ function App() {
         <h2>Popular Categories</h2>
 
         <div className="grid">
-
           {categories.map((item) => (
             <div className="category" key={item}>
               {item}
             </div>
           ))}
-
         </div>
 
       </section>
@@ -158,23 +107,7 @@ function App() {
 
       </section>
 
-      {/* Footer */}
-
-      <footer className="footer">
-
-        <h3>AutoKart India</h3>
-
-        <p>
-          Accessories for Maruti, Hyundai, Tata,
-          Mahindra, Kia, Toyota, Honda, BMW,
-          Mercedes and more.
-        </p>
-
-        <p>© 2026 AutoKart India</p>
-
-      </footer>
-
-    </div>
+    </>
   );
 }
 
